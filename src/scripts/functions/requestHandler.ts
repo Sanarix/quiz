@@ -15,11 +15,10 @@ interface IResponceJSON {
 export default function responceHandler(data: IResponceJSON): Object {
 	const object = data[0];
 
-	const result = {
+	const result: Object = {
 		question: object.question,
 		answer: object.answer,
-		value: object.value
+		value: object.value,
 	}
-
 	return result
 }

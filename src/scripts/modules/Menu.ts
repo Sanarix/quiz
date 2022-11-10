@@ -1,7 +1,11 @@
 import menuHandler from '../functions/menuHandler'
+import Game from '../modules/Game'
 
-interface IMenuSettings {
-	gamemode: string;
+interface ISettings {
+	mode: string;
+	player1: string;
+	player2: string;
+	currentCoast: number;
 }
 
 export default class Menu {
@@ -12,6 +16,8 @@ export default class Menu {
 	private player2: string;
 	private orderSlides: Array<Function>;
 	private currentSlide: number;
+	private coast: number;
+	private game: Game;
 
 	constructor() {
 		this.field = document.querySelector('.game-field');
@@ -25,15 +31,23 @@ export default class Menu {
 												this.slideCoast
 											];
 		this.currentSlide = 1;
+		this.coast = null;
+		this.game = new Game();
 	}
 
-	init() {
-		if(this.orderSlides.length > this.currentSlide) {
-			this.field.innerHTML = '';
-			this.render(this.orderSlides[this.currentSlide])
-			menuHandler(this);
-		}else {
-			return
+	init(){
+			if(this.orderSlides.length > this.currentSlide) {
+				this.field.innerHTML = '';
+				this.render(this.orderSlides[this.currentSlide])
+				menuHandler(this);
+			}else {
+				let settings: ISettings = {
+					"mode": this.mode,
+					"player1": this.player1,
+					"player2": this.player2,
+					"currentCoast": +this.coast,
+				}
+				this.game.start(this.field, settings)
 		}
 	}
 
@@ -86,7 +100,7 @@ export default class Menu {
 		</div>
 		<!--row-->
 		<div class="row mt-4">
-			<button class="btn btn-menu">Next</button>
+			<button class="btn btn-menu btn-nick">Next</button>
 		</div>
 		<!--row-->
 		`

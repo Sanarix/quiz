@@ -1,4 +1,5 @@
 import menuHandler from '../functions/menuHandler';
+import Game from '../modules/Game';
 export default class Menu {
     constructor() {
         this.field = document.querySelector('.game-field');
@@ -12,6 +13,8 @@ export default class Menu {
             this.slideCoast
         ];
         this.currentSlide = 1;
+        this.coast = null;
+        this.game = new Game();
     }
     init() {
         if (this.orderSlides.length > this.currentSlide) {
@@ -20,7 +23,13 @@ export default class Menu {
             menuHandler(this);
         }
         else {
-            return;
+            let settings = {
+                "mode": this.mode,
+                "player1": this.player1,
+                "player2": this.player2,
+                "currentCoast": +this.coast,
+            };
+            this.game.start(this.field, settings);
         }
     }
     render(slide) {
@@ -69,7 +78,7 @@ export default class Menu {
 		</div>
 		<!--row-->
 		<div class="row mt-4">
-			<button class="btn btn-menu">Next</button>
+			<button class="btn btn-menu btn-nick">Next</button>
 		</div>
 		<!--row-->
 		`;

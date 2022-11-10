@@ -4,7 +4,8 @@ html,body
 
 .wrapper 
 	min-height: 100%
-	height: 100vh
+	min-height: 100vh
+	height: 100%
 
 header 
 	height: 10%
@@ -28,18 +29,50 @@ main
 			justify-content: center
 
 .game-field
+	display: flex
+	flex-direction: column
 	justify-content: center
+	align-items: center
 	width: 50%
+	height: 100%
 	background-color: #dddddd
 	border: 2px solid darkgrey
 	border-radius: 10px
 	padding: 1em
 
+.game-header
+	display: flex
+	align-items: center
+	justify-content: center
+	flex-direction: column
+
+.coast
+	margin-bottom: 2em
+	.game-menu_header
+	text-align: center
+
+.players-score
+	.scores
+		display: flex
+		align-items: center
+		justify-content: space-between
+		width: 100%
+		margin-bottom: 2em
+
+.button-block
+	display: flex
+	align-items: center
+	justify-content: space-between
+	width: 100%
+	.btn
+		width: 15%
+
 .btn
 	border: 1px solid black
 	background-color: #fff
-	&:hover
+	&:hover, &:focus
 		box-shadow: 1px 2px 5px 1px
+		outline: none
 	
 .btn-start 
 	border-radius: 5px
@@ -51,11 +84,34 @@ main
 	border: none
 	background-color: rgb(204, 102, 51)
 
+.question
+	border-radius: 10px
+	padding: 1em
+	background-color: #fff
+	margin-bottom: 1em
+
+.answer
+	display: flex
+	align-items: center
+	justify-content: space-between
+	input
+		width: 70%
+		border-radius: 10px
+		border: none
+		&:active, &:focus
+			outline: none
+
 footer 
 	height: 10%
 
 .pre-game 
+	display: flex
+	align-items: center
+	justify-content: center
+	flex-direction: column
+	height: 100%
 	background: radial-gradient(circle, rgba(115,142,255,1) 0%, rgba(127,254,255,1) 50%, rgba(33,25,168,1) 100%)
+	background-size: 100% 100%
 
 /*Дополнительные стили*/
 	

@@ -1,22 +1,31 @@
 export default function menuHandler(context: any) {
 	let buttons: HTMLCollectionBase = document.querySelectorAll('.btn-menu');
 	let buttonNext: HTMLButtonElement = document.querySelector('.btn-next');
+	let flag = true;
 
 	for(let button of buttons) {
 		button.addEventListener('click', (e: any) => {
 			context.currentSlide++;
-			context.init();
 			if(e.currentTarget.dataset.mode) {
 				context.mode = e.currentTarget.dataset.mode
-			}
-			if(e.currentTarget.dataset.coast) {
-				console.log(e.currentTarget.dataset.coast);
-				
-			}
-		})
-	}
 
-	if(context.mode === 'dual') {
-		document.querySelector('.dual').classList.remove('hide');
+				if(context.mode === 'dual') {
+					document.querySelector('.dual').classList.remove('hide');
+				}
+			}
+
+			if(e.currentTarget.classList.contains('btn-nick')) {
+				const nickname1: HTMLInputElement = document.querySelector('.nickname-1');
+				const nickname2: HTMLInputElement = document.querySelector('.nickname-2');
+				context.player1 = nickname1.value;
+				context.player2 = nickname2.value;
+			}
+
+			if(e.currentTarget.dataset.coast) {
+				context.coast = e.currentTarget.dataset.coast;
+				flag = false;
+			}
+				context.init();
+		})
 	}
 }

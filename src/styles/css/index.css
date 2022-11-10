@@ -6,7 +6,8 @@ html, body {
 
 .wrapper {
   min-height: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 
 header {
@@ -36,20 +37,55 @@ main {
 }
 
 .game-field {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 50%;
+  height: 100%;
   background-color: #dddddd;
   border: 2px solid darkgrey;
   border-radius: 10px;
   padding: 1em;
 }
 
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.coast {
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.players-score .scores {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+.button-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.button-block .btn {
+  width: 15%;
+}
+
 .btn {
   border: 1px solid black;
   background-color: #fff;
 }
-.btn:hover {
+.btn:hover, .btn:focus {
   box-shadow: 1px 2px 5px 1px;
+  outline: none;
 }
 
 .btn-start {
@@ -63,12 +99,39 @@ main {
   background-color: #cc6633;
 }
 
+.question {
+  border-radius: 10px;
+  padding: 1em;
+  background-color: #fff;
+  margin-bottom: 1em;
+}
+
+.answer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.answer input {
+  width: 70%;
+  border-radius: 10px;
+  border: none;
+}
+.answer input:active, .answer input:focus {
+  outline: none;
+}
+
 footer {
   height: 10%;
 }
 
 .pre-game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
   background: radial-gradient(circle, #738eff 0%, #7ffeff 50%, #2119a8 100%);
+  background-size: 100% 100%;
 }
 
 /*Дополнительные стили */

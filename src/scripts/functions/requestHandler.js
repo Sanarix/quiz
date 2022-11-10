@@ -3,7 +3,7 @@ export default function responceHandler(data) {
     const result = {
         question: object.question,
         answer: object.answer,
-        value: object.value
+        value: object.value,
     };
     return result;
 }
