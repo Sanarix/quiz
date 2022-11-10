@@ -1,7 +1,6 @@
 import config from '../../../requestConfig.json';
+
 export default class TranslateRequest {
-	//Запрос осуществляется на rapidapi
-	//https://rapidapi.com/hub
 
 	private options: Object;
 	private config: Object;
