@@ -37,15 +37,14 @@ export default class Menu {
 
 	init(){
 			if(this.orderSlides.length > this.currentSlide) {
-				this.field.innerHTML = '';
 				this.render(this.orderSlides[this.currentSlide])
 				menuHandler(this);
 			}else {
 				let settings: ISettings = {
-					"mode": this.mode,
-					"player1": this.player1,
-					"player2": this.player2,
-					"currentCoast": +this.coast,
+					mode: this.mode,
+					player1: this.player1,
+					player2: this.player2,
+					currentCoast: +this.coast,
 				}
 				this.game.start(this.field, settings)
 		}

@@ -12,13 +12,20 @@ interface IResponceJSON {
 	value: number
 }
 
-export default function responceHandler(data: IResponceJSON): Object {
-	const object = data[0];
+export default function responceHandler(
+																				data: Array<Object>,
+																				currentCoast: number
+																				){
+	const dataArray = data;
 
-	const result: Object = {
-		question: object.question,
-		answer: object.answer,
-		value: object.value,
+	let result: any = dataArray.find((obj:any) => {if(obj.value === currentCoast) {return obj}});
+
+	if(result) {
+		return {
+			question: result.question,
+			answer: result.answer,
+		}	
+	}else {
+		throw new Error('Coast of question is not defined');
 	}
-	return result
 }
