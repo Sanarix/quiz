@@ -26,6 +26,7 @@ export default class Game {
                 this.question = result.question;
                 document.querySelector('.question').textContent = result.question;
             });
+            //Временно отключен перевод из за лимита запросов в месяц 7/500
             // this.TranslateRequest.request(this.question);
         });
     }

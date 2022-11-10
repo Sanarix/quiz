@@ -7,15 +7,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import config from '../../../requestConfig.json';
 export default class TranslateRequest {
     constructor() {
         this.options;
+        this.config = config;
     }
     request(text) {
         return __awaiter(this, void 0, void 0, function* () {
             this.getOptions(text);
             yield fetch('https://translate-plus.p.rapidapi.com/translate', this.options)
                 .then(response => response.json())
+                //TODO сделать вывод перевода в .question
                 .then(response => console.log(response.translations.translation))
                 .catch(err => console.error(err));
         });
@@ -25,7 +28,7 @@ export default class TranslateRequest {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                'X-RapidAPI-Key': '6d48b0ffe8mshab7aac7de5cd59ep1a966fjsn2133041bc06a',
+                'X-RapidAPI-Key': `${config.translateAPI}`,
                 'X-RapidAPI-Host': 'translate-plus.p.rapidapi.com'
             },
             body: `{"text":"${text}","source":"en","target":"ru"}`

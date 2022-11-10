@@ -2,6 +2,7 @@ import QuestionRequest from './QuestionRequest'
 import requestHandler from '../functions/requestHandler'
 import TranslateRequest from './TranslateRequest'
 
+
 export default class Game {
 
 	private QuestionRequest: QuestionRequest;
@@ -29,6 +30,9 @@ export default class Game {
 				this.question = result.question;
 				document.querySelector('.question').textContent = result.question;
 			});
+			
+			
+			//Временно отключен перевод из за лимита запросов в месяц 7/500
 			// this.TranslateRequest.request(this.question);
 	}
 
