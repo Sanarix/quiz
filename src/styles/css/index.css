@@ -1,0 +1,89 @@
+@charset "UTF-8";
+html, body {
+  position: relative;
+  min-height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: 100vh;
+}
+
+header {
+  height: 10%;
+}
+
+main {
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-theme {
+  width: 100%;
+}
+.main-theme .row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-theme .row .col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-field {
+  justify-content: center;
+  width: 50%;
+  background-color: #dddddd;
+  border: 2px solid darkgrey;
+  border-radius: 10px;
+  padding: 1em;
+}
+
+.btn {
+  border: 1px solid black;
+  background-color: #fff;
+}
+.btn:hover {
+  box-shadow: 1px 2px 5px 1px;
+}
+
+.btn-start {
+  border-radius: 5px;
+  font-size: 2.5em;
+  padding: 10px 10px;
+  width: 5em;
+  color: white;
+  font-weight: bold;
+  border: none;
+  background-color: #cc6633;
+}
+
+footer {
+  height: 10%;
+}
+
+.pre-game {
+  background: radial-gradient(circle, #738eff 0%, #7ffeff 50%, #2119a8 100%);
+}
+
+/*Дополнительные стили */
+.hide {
+  display: none !important;
+}
+
+@media screen and (max-width: 1280px) {
+  .game-field {
+    width: 100%;
+    padding: 0.5em;
+  }
+
+  .btn-mode {
+    width: 100%;
+    font-size: 1em;
+  }
+}

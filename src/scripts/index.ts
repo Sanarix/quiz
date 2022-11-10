@@ -1,8 +1,12 @@
-import '../styles/index.css';
-import Game from './modules/Game'
+import '../styles/css/index.css';
+import '../styles/css/menu.css';
+import Menu from './modules/Menu'
 
-const game: Game = new Game();
+const menu: Menu = new Menu(); 
 
+const startButton = document.querySelector('.btn-start');
 
-
-game.start();
+startButton.addEventListener('click', e => {
+	e.preventDefault();
+	menu.init();
+})

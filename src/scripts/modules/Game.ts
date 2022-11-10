@@ -1,19 +1,21 @@
 import Request from './Request'
+import requestHandler from '../functions/requestHandler'
 
 export default class Game {
 
 	private startButton: HTMLElement;
-	private request: Request;
+	private Request: Request;
 
 	constructor() {
-		this.request = new Request('http://jservice.io/api/random?count=1');
+		this.Request = new Request('http://jservice.io/api/random?count=1');
 		this.startButton = document.querySelector('.btn-start');
 	}
 
 	start() {
-		this.startButton.addEventListener('click', e => {
-			this.request.request();
-		})
+
+		// this.Request.request().
+			// then((json) => {requestHandler(json)}).
+			// catch(() => {throw new Error('Failed request')});
 	}
 
 	stop() {}

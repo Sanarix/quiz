@@ -13,14 +13,8 @@ export default class Request {
     }
     request() {
         return __awaiter(this, void 0, void 0, function* () {
-            const promise = yield fetch(this.url);
-            if (promise.ok) {
-                let responce = yield promise.json();
-                console.log(responce);
-            }
-            else {
-                console.log('Sorry but responce is down');
-            }
+            const data = yield fetch(this.url);
+            return yield data.json();
         });
     }
 }
