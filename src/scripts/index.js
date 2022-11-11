@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import '../styles/css/index.css';
 import '../styles/css/menu.css';
+import '../styles/css/game.css';
 import Menu from './modules/Menu';
 const menu = new Menu();
 const startButton = document.querySelector('.btn-start');

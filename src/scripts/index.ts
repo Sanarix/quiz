@@ -1,5 +1,6 @@
 import '../styles/css/index.css';
 import '../styles/css/menu.css';
+import '../styles/css/game.css'
 import Menu from './modules/Menu'
 
 const menu: Menu = new Menu();

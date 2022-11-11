@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import QuestionRequest from './QuestionRequest';
 import requestHandler from '../functions/requestHandler';
 import TranslateRequest from './TranslateRequest';
+import gameHandler from '../functions/gameHandler';
 export default class Game {
     constructor() {
         this.QuestionRequest = new QuestionRequest();
@@ -17,56 +18,65 @@ export default class Game {
         this.score1 = 0;
         this.score2 = 0;
         this.question = '';
+        this.settings = {};
     }
     start(element, settings) {
+        this.settings = settings;
+        this.renderGame(element, settings, this.score1, this.score2);
+        this.nextQuestion(settings);
+    }
+    nextQuestion(settings) {
         return __awaiter(this, void 0, void 0, function* () {
             let data = yield this.QuestionRequest.request(settings.currentCoast).
                 then((json) => { return requestHandler(json, settings.currentCoast); }).then((result) => {
-                this.renderGameFrame(element, settings, this.score1, this.score2);
                 this.question = result.question;
-                document.querySelector('.question').textContent = result.question;
+                document.querySelector('.question').textContent = this.question;
             });
+            gameHandler(this, this.settings);
             //Временно отключен перевод из за лимита запросов в месяц 7/500
             // this.TranslateRequest.request(this.question);
         });
     }
     stop() { }
-    renderGameFrame(element, settings, score1, score2) {
+    renderGame(element, settings, score1, score2) {
         element.innerHTML = `
-		<div class="row coast">
-			<h2 class="game-menu_header">Choose coast of question</h2>
-			<div class="button-block">
-				<button class="btn btn-mode">200</button>
-				<button class="btn btn-mode">300</button>
-				<button class="btn btn-mode">400</button>
-				<button class="btn btn-mode">500</button>
-				<button class="btn btn-mode">600</button>
-			</div>
-			<!--buttons-->
-		</div>
-		<!--row-->
-		<div class="container game-frame">
-			<header class="container game-header">
-				<div class="row players-score">
-					<div class="scores">
-						<div class="score-1">${settings.player1 + ':'} <span class="pscore-1">${score1}</span></div>
-						<div class="score-2">${settings.player2 + ':' || ''} <span class="pscore-2">${score2}</span></div>
-					</div>
-					<!--players-score-->
+		<div class="game">
+			<div class="row coast">
+				<h2 class="game-menu_header">Choose coast of question</h2>
+				<div class="button-block">
+					<button class="btn btn-mode">200</button>
+					<button class="btn btn-mode">300</button>
+					<button class="btn btn-mode">400</button>
+					<button class="btn btn-mode">500</button>
+					<button class="btn btn-mode">600</button>
 				</div>
-				<!--row players-score-->
-			</header>
-		<div class="question">
-			Oops! Something went wrong
+				<!--buttons-->
+			</div>
+			<!--row-->
+			<div class="container game-frame">
+				<header class="container game-header">
+					<div class="row players-score">
+						<div class="scores">
+							<div class="score-1">${settings.player1 + ':'} <span class="pscore-1">${score1}</span></div>
+							<div class="score-2">${settings.player2 ? settings.player2 + ':' : ''} <span class="pscore-2">${settings.player2 ? score2 : ''}</span></div>
+						</div>
+						<!--players-score-->
+					</div>
+					<!--row players-score-->
+				</header>
+			<div class="question">
+				Waiting...
+			</div>
+			<!--question-->
+			<div class="container answer">
+				<input type="text" class="answer" placeholder="Enter your answer">
+				<button class="btn btn-answer">Let's go!</button>
+			</div>
+			<!--container answer-->
 		</div>
-		<!--question-->
-		<div class="container answer">
-			<input type="text" class="answer" placeholder="Enter your answer">
-			<button class="btn btn-answer">Let's go!</button>
-		</div>
-		<!--container answer-->
+		<!--row coast-->
 	</div>
-	<!--row coast-->
+	<!--game-->
 		`;
     }
 }

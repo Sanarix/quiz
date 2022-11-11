@@ -39,11 +39,12 @@ export default class Menu {
     }
     slideMode() {
         return `
+		<div class="game">
 			<div class="row">
 				<h2 class="menu-mode_header">Game mode</h2>
 			</div>
 			<!--row-->
-			<div class="row">
+			<div class="row buttons-mode d-flex">
 				<div class="col col-4">
 					<button class="btn btn-menu" data-mode="single">
 						Single player
@@ -58,49 +59,61 @@ export default class Menu {
 				<!--col-->
 			</div>
 			<!--row-->
+		</div>
+		<!--game-->
 		`;
     }
     slideNickname() {
         return `
-		<h2 class="menu-mode_header">Enter nickname</h2>
-		<div class="row">
-			<div class="col flex-column">
-				<label for="text" class="input-label">Player 1</label>
-				<input type="text" class="nickname-1" placeholder="Nickname">
+		<div class="game">
+			<h2 class="menu-mode_header">Enter nickname</h2>
+			<div class="row">
+				<div class="col flex-column">
+					<label for="text" class="input-label">Player 1</label>
+					<div class="nickname-wrapper">
+						<input type="text" class="nickname-1" placeholder="Nickname">
+					</div>
+				</div>
+				<!--col-->
+				<div class="col flex-column dual hide">
+					<label for="text" class="input-label">Player 2</label>
+					<div class="nickname-wrapper">
+						<input type="text" class="nickname-2" placeholder="Nickname">
+					</div>
+				</div>
+				<!--col-->
 			</div>
-			<!--col-->
-			<div class="col flex-column dual hide">
-				<label for="text" class="input-label">Player 2</label>
-				<input type="text" class="nickname-2" placeholder="Nickname">
+			<!--row-->
+			<div class="row mt-4">
+				<button class="btn btn-menu btn-nick">Next</button>
 			</div>
-			<!--col-->
+			<!--row-->
 		</div>
-		<!--row-->
-		<div class="row mt-4">
-			<button class="btn btn-menu btn-nick">Next</button>
-		</div>
-		<!--row-->
+		<!--game-->
 		`;
     }
     slideCoast() {
         return `
-		<div class="container d-flex flex-column">
-			<h2 class="menu-mode_header">
-				Which start coast of question?
-			</h2>	
-			<div class="container">
-				<div class="buttons">
-					<button class="btn btn-menu" data-coast=200>200</button>
-					<button class="btn btn-menu" data-coast=300>300</button>
-					<button class="btn btn-menu" data-coast=400>400</button>
-					<button class="btn btn-menu" data-coast=500>500</button>
-					<button class="btn btn-menu" data-coast=600>600</button>
+		<div class="game">
+			<div class="container d-flex flex-column">
+				<h2 class="menu-mode_header">
+					Which start coast of question?
+				</h2>	
+				<div class="container">
+					<div class="buttons">
+						<button class="btn btn-menu" data-coast=200>200</button>
+						<button class="btn btn-menu" data-coast=300>300</button>
+						<button class="btn btn-menu" data-coast=400>400</button>
+						<button class="btn btn-menu" data-coast=500>500</button>
+						<button class="btn btn-menu" data-coast=600>600</button>
+					</div>
+					<!--buttons-->
 				</div>
-				<!--buttons-->
+				<!--container-->
 			</div>
 			<!--container-->
 		</div>
-		<!--container-->
+		<!--game-->
 		`;
     }
 }
