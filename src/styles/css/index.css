@@ -51,7 +51,7 @@ main {
   height: 100%;
 }
 
-.game {
+.menu {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,8 +60,40 @@ main {
   height: 100%;
   border-radius: 10px;
   padding: 1em;
-  background-color: #dddddd;
+  background-color: #F1DAC4;
   border: 2px solid darkgrey;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  padding: 1em;
+  background-color: #F1DAC4;
+  border: 2px solid darkgrey;
+}
+.game .coast {
+  width: 60%;
+}
+.game .coast .game-menu_header {
+  font-size: 1em;
+}
+.game .coast .button-block {
+  flex-direction: column;
+}
+.game .coast .button-block .btn-mode {
+  width: 50%;
+  margin-bottom: 0.5em;
+}
+.game .game-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .game-header {
@@ -158,5 +190,34 @@ footer {
   .btn-mode {
     width: 100%;
     font-size: 1em;
+  }
+}
+@media screen and (max-width: 720px) {
+  main {
+    height: 100%;
+    width: 100%;
+  }
+
+  .game-field {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .game {
+    flex-direction: column;
+  }
+  .game .game-menu_header {
+    display: none;
+  }
+  .game .button-block {
+    position: absolute;
+    top: 1em;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row !important;
   }
 }

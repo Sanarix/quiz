@@ -60,7 +60,7 @@ export default class Menu {
 
 	slideMode() {
 		return `
-		<div class="game">
+		<div class="menu">
 			<div class="row">
 				<h2 class="menu-mode_header">Game mode</h2>
 			</div>
@@ -87,7 +87,7 @@ export default class Menu {
 
 	slideNickname() {
 		return `
-		<div class="game">
+		<div class="menu">
 			<h2 class="menu-mode_header">Enter nickname</h2>
 			<div class="row">
 				<div class="col flex-column">
@@ -117,7 +117,7 @@ export default class Menu {
 
 	slideCoast() {
 		return `
-		<div class="game">
+		<div class="menu">
 			<div class="container d-flex flex-column">
 				<h2 class="menu-mode_header">
 					Which start coast of question?

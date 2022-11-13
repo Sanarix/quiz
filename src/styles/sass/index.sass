@@ -1,3 +1,15 @@
+@mixin loadFrame($direction) 
+	display: flex
+	flex-direction: $direction
+	justify-content: center
+	align-items: center
+	width: 100%
+	height: 100%
+	border-radius: 10px
+	padding: 1em
+	background-color: #F1DAC4
+	border: 2px solid darkgrey
+
 html,body 
 	position: relative
 	min-height: 100%
@@ -12,7 +24,9 @@ html,body
 	flex-direction: column
 	height: 100%
 	background: radial-gradient(circle, rgba(115,142,255,1) 0%, rgba(127,254,255,1) 50%, rgba(33,25,168,1) 100%)
+	// background: linear-gradient(0deg,#edefee,#c9c9c9)
 	background-size: 100% 100%
+	// Изображение от <a href="https://ru.freepik.com/free-vector/_15441828.htm#query=design%20elements&position=21&from_view=keyword">Freepik</a>
 
 header 
 	height: 10%
@@ -42,17 +56,25 @@ main
 	width: 50%
 	height: 100%
 
-.game 
-	display: flex
-	flex-direction: column
-	justify-content: center
-	align-items: center
-	width: 100%
-	height: 100%
-	border-radius: 10px
-	padding: 1em
-	background-color: #dddddd
-	border: 2px solid darkgrey
+.menu 
+	@include loadFrame(column)
+
+.game
+	@include loadFrame(row)
+	.coast
+		width: 60%
+		.game-menu_header
+			font-size: 1em
+		.button-block
+			flex-direction: column
+			.btn-mode
+				width: 50%
+				margin-bottom: 0.5em
+	.game-frame
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
 
 .game-header
 	display: flex
@@ -133,6 +155,33 @@ footer
 	.game-field
 		width: 100%
 		padding: 0.5em
+
 	.btn-mode
 		width: 100%
 		font-size: 1em
+
+@media screen and (max-width: 720px)
+	main
+		height: 100%
+		width: 100%
+
+	.game-field
+		position: absolute
+		height: 100vh
+		width: 100vw
+		box-sizing: border-box
+		margin: 0
+		padding: 0
+	
+	.game
+		flex-direction: column
+		.game-menu_header
+			display: none
+		.button-block
+			position: absolute
+			top: 1em
+			align-items: center
+			justify-content: center
+			flex-direction: row !important
+	
+

@@ -1,3 +1,5 @@
 .active {
+  box-shadow: inset 2px 1px 3px 1px;
+  box-shadow-outline: none;
   background-color: #99FF99;
 }

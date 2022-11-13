@@ -3,6 +3,12 @@ import requestHandler from '../functions/requestHandler'
 import TranslateRequest from './TranslateRequest'
 import gameHandler from '../functions/gameHandler'
 
+interface ISettings {
+	mode: string;
+	player1: string;
+	player2: string;
+	currentCoast: number;
+}
 
 export default class Game {
 
@@ -11,7 +17,7 @@ export default class Game {
 	private score1: number;
 	private score2: number;
 	private question: string;
-	private settings: Object;
+	private settings: ISettings;
 
 	constructor() {
 		this.QuestionRequest = new QuestionRequest();
@@ -19,16 +25,17 @@ export default class Game {
 		this.score1 = 0;
 		this.score2 = 0;
 		this.question = '';
-		this.settings = {};
+		this.settings;
 	}
 
-	start(element: HTMLElement, settings: any) {
+	start(element: HTMLElement, settings: ISettings) {
 		this.settings = settings;
 		this.renderGame(element, settings, this.score1, this.score2);
+		this.setActiveButton(this.settings);
 		this.nextQuestion(settings);
 	}
 
-	async nextQuestion(settings: any) {
+	async nextQuestion(settings: ISettings) {
 		let data = await this.QuestionRequest.request(settings.currentCoast).
 		then((json) => {return requestHandler(json, settings.currentCoast)}).then((result: any) => {
 			this.question = result.question;
@@ -38,6 +45,16 @@ export default class Game {
 		gameHandler(this, this.settings)
 		//Временно отключен перевод из за лимита запросов в месяц 7/500
 		// this.TranslateRequest.request(this.question);
+	}
+
+	setActiveButton(settings: ISettings) {
+		const buttonBlock = document.querySelector('.button-block');
+
+		for(let button of buttonBlock.children) {
+			if(+button.textContent === settings.currentCoast) {
+				button.classList.add('active');
+			}
+		}
 	}
 
 	stop() {}
@@ -56,31 +73,32 @@ export default class Game {
 				</div>
 				<!--buttons-->
 			</div>
-			<!--row-->
+			<!--row coast-->
 			<div class="container game-frame">
 				<header class="container game-header">
-					<div class="row players-score">
-						<div class="scores">
-							<div class="score-1">${settings.player1 + ':'} <span class="pscore-1">${score1}</span></div>
-							<div class="score-2">${settings.player2 ?settings.player2  + ':' : ''} <span class="pscore-2">${settings.player2 ? score2 : ''}</span></div>
-						</div>
-						<!--players-score-->
-					</div>
-					<!--row players-score-->
+				<!--TODO переместить-->
 				</header>
-			<div class="question">
-				Waiting...
+				<div class="question">
+					Waiting...
+				</div>
+				<!--question-->
+				<div class="container answer">
+					<input type="text" class="answer" placeholder="Enter your answer">
+					<button class="btn btn-answer">Let's go!</button>
+				</div>
+				<!--container answer-->
+				<div class="row players-score">
+					<div class="scores">
+						<div class="score-1">${settings.player1 + ':'} <span class="pscore-1">${score1}</span></div>
+						<div class="score-2">${settings.player2 ?settings.player2  + ':' : ''} <span class="pscore-2">${settings.player2 ? score2 : ''}</span></div>
+					</div>
+					<!--scores-->
+				</div>
+				<!--row players-score-->
 			</div>
-			<!--question-->
-			<div class="container answer">
-				<input type="text" class="answer" placeholder="Enter your answer">
-				<button class="btn btn-answer">Let's go!</button>
-			</div>
-			<!--container answer-->
+			<!--container game-frame-->
 		</div>
-		<!--row coast-->
-	</div>
-	<!--game-->
+		<!--game-->
 		`
 	}
 }
