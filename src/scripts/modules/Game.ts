@@ -17,6 +17,7 @@ export default class Game {
 	private score1: number;
 	private score2: number;
 	private question: string;
+	private answer: string;
 	private settings: ISettings;
 
 	constructor() {
@@ -25,6 +26,7 @@ export default class Game {
 		this.score1 = 0;
 		this.score2 = 0;
 		this.question = '';
+		this.answer = '';
 		this.settings;
 	}
 
@@ -39,12 +41,13 @@ export default class Game {
 		let data = await this.QuestionRequest.request(settings.currentCoast).
 		then((json) => {return requestHandler(json, settings.currentCoast)}).then((result: any) => {
 			this.question = result.question;
+			this.answer = result.answer;
 			document.querySelector('.question').textContent = this.question;
 		});
 
 		gameHandler(this, this.settings)
-		//Временно отключен перевод из за лимита запросов в месяц 7/500
-		// this.TranslateRequest.request(this.question);
+		//Временно отключен перевод из за лимита запросов в месяц 11/500
+		// this.TranslateRequest.request(this.question, this.answer);
 	}
 
 	setActiveButton(settings: ISettings) {

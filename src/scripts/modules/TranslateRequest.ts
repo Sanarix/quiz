@@ -10,16 +10,17 @@ export default class TranslateRequest {
 		this.config = config;
 	}
 
-	async request(text: string) {
-		this.getOptions(text)
+	async request(question: string, answer: any) {
+		this.getOptions(question, answer)
 		await fetch('https://translate-plus.p.rapidapi.com/translate', this.options)
 		.then(response => response.json())
 		//TODO сделать вывод перевода в .question
-		.then(response => console.log(response.translations.translation))
+		//результат в виде ['Сериал Стивена Дж. Каннелла 1970-х ', ' <i>The Rockford Files</i>']
+		.then(response => {const res = response.translations.translation.split(':::'); console.log(res)})
 		.catch(err => console.error(err));
 	}
 
-	getOptions(text: string) {
+	getOptions(question: string, answer: any) {
 		this.options = {
 			method: 'POST',
 			headers: {
@@ -27,7 +28,7 @@ export default class TranslateRequest {
 				'X-RapidAPI-Key': `${config.translateAPI}`,
 				'X-RapidAPI-Host': 'translate-plus.p.rapidapi.com'
 			},
-			body: `{"text":"${text}","source":"en","target":"ru"}`
+			body: `{"text":"${question} ::: ${answer}","source":"en","target":"ru"}`
 		}
 	}
 }
