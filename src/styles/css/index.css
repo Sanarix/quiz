@@ -47,7 +47,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 70%;
   height: 100%;
 }
 
@@ -66,6 +66,21 @@ main {
 
 .game {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  padding: 1em;
+  background-color: #F1DAC4;
+  border: 2px solid darkgrey;
+  border: 4px solid #B66415;
+  padding: 0;
+}
+
+.game-body {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -75,32 +90,101 @@ main {
   padding: 1em;
   background-color: #F1DAC4;
   border: 2px solid darkgrey;
+  justify-content: space-between;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
-.game .coast {
-  width: 60%;
-}
-.game .coast .game-menu_header {
-  font-size: 1em;
-}
-.game .coast .button-block {
-  flex-direction: column;
-}
-.game .coast .button-block .btn-mode {
-  width: 50%;
-  margin-bottom: 0.5em;
-}
-.game .game-frame {
+.game-body .control {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+  width: 30%;
+  margin: 0;
+  padding: 10px 0 10px;
 }
-
-.game-header {
+.game-body .control::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 4px;
+  height: 100%;
+  background-color: #B66415;
+}
+.game-body .control::after {
+  position: absolute;
+  top: 88%;
+  left: 0;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: #B66415;
+}
+.game-body .control .rules {
+  margin-top: 2vh;
+}
+.game-body .control .game-menu_header {
+  font-size: 1em;
+  text-align: center;
+}
+.game-body .control .button-block {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.game-body .control .button-block .btn-mode {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0.5em;
+  padding: 10px;
+  border-radius: 50%;
+  border: 3px solid #B66415;
+  background-color: #5258EC;
+  color: #ffffff;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+.game-body .interface {
+  display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 60%;
+}
+.game-body .interface-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.game-body .interface-header::after {
+  position: absolute;
+  top: 100%;
+  left: -16%;
+  content: "";
+  display: block;
+  width: 116%;
+  height: 4px;
+  background-color: #B66415;
+}
+.game-body .interface-header .current-player {
+  font-weight: bold;
+}
+.game-body .interface-header .timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px 10px 30px;
+  font-size: 1.7em;
+  text-align: center;
+  width: 10%;
+  height: 100%;
+  border-left: 4px solid #B66415;
 }
 
 .coast {
@@ -149,11 +233,36 @@ main {
   background-color: #cc6633;
 }
 
-.question {
+.question-container .question {
   border-radius: 10px;
   padding: 1em;
   background-color: #fff;
   margin-bottom: 1em;
+}
+.question-container .lang {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.question-container .lang-button {
+  background-color: #D9D9D9;
+  border: 1px solid #A4A4A4;
+  font-size: 1.2em;
+  text-align: center;
+  border-radius: 5px;
+  margin-right: 0.3vw;
+}
+.question-container .active {
+  background-color: #36AE36;
+  border: 1px solid #1F741F;
+}
+.question-container .hint {
+  border-radius: 50px;
+  width: 5%;
+  background-color: #D9D9D9;
+  border: 1px solid #A4A4A4;
+  text-align: center;
+  cursor: pointer;
 }
 
 .answer {
@@ -210,14 +319,16 @@ footer {
   .game {
     flex-direction: column;
   }
-  .game .game-menu_header {
-    display: none;
+
+  .coast {
+    width: 100%;
   }
-  .game .button-block {
-    position: absolute;
-    top: 1em;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row !important;
+  .coast .game-menu_header {
+    width: 100%;
+    text-align: auto;
+  }
+
+  .button-block {
+    flex-direction: row;
   }
 }

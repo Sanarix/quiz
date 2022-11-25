@@ -15,6 +15,6 @@ export default class QuestionRequest {
         });
     }
     getUrl(coast) {
-        return `http://jservice.io/api/random?count=100`;
+        return `http://jservice.io/api/random?count=${coast}`;
     }
 }

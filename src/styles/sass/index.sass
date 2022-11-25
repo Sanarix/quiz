@@ -53,34 +53,102 @@ main
 	display: flex
 	justify-content: center
 	align-items: center
-	width: 50%
+	width: 70%
 	height: 100%
 
 .menu 
 	@include loadFrame(column)
 
 .game
+	@include loadFrame(column)
+	border: 4px solid #B66415
+	padding: 0
+.game-body
 	@include loadFrame(row)
-	.coast
-		width: 60%
-		.game-menu_header
-			font-size: 1em
-		.button-block
-			flex-direction: column
-			.btn-mode
-				width: 50%
-				margin-bottom: 0.5em
-	.game-frame
+	justify-content: space-between
+	border: none
+	margin: 0
+	padding: 0
+	.control
 		display: flex
-		flex-direction: column
 		align-items: center
 		justify-content: space-between
+		flex-direction: column
+		position: relative
+		width: 30%
+		margin: 0
+		padding: 10px 0 10px
+		&::before
+			content: ''
+			display: block
+			position: absolute
+			top: 0
+			left: 100%
+			width: 4px
+			height: 100%
+			background-color: #B66415
+		&::after
+				position: absolute
+				top: 88%
+				left: 0
+				content: ''
+				display: block
+				width: 100%
+				height: 4px
+				background-color: #B66415
+		.rules
+			margin-top: 2vh
+		.game-menu_header
+			font-size: 1em
+			text-align: center
+		.button-block
+			flex-direction: column
+			align-items: center
+			justify-content: center
+			.btn-mode
+				display: flex
+				align-items: center
+				justify-content: center
+				margin-bottom: 0.5em
+				padding: 10px
+				border-radius: 50%
+				border: 3px solid #B66415
+				background-color: #5258EC
+				color: #ffffff
+				font-size: 1.4em
+				cursor: pointer
 
-.game-header
-	display: flex
-	align-items: center
-	justify-content: center
-	flex-direction: column
+	.interface
+		display: flex
+		flex-direction: column
+		height: 100%
+		width: 60%
+		&-header
+			position: relative
+			display: flex
+			align-items: center
+			justify-content: space-between
+			&::after
+				position: absolute
+				top: 100%
+				left: -16%
+				content: ''
+				display: block
+				width: 116%
+				height: 4px
+				background-color: #B66415
+			.current-player
+				font-weight: bold
+			.timer
+				display: flex
+				align-items: center
+				justify-content: center
+				padding: 10px 10px 10px 30px
+				font-size: 1.7em
+				text-align: center
+				width: 10%
+				height: 100%
+				border-left: 4px solid #B66415
 
 .coast
 	margin-bottom: 2em
@@ -122,11 +190,34 @@ main
 	border: none
 	background-color: rgb(204, 102, 51)
 
-.question
-	border-radius: 10px
-	padding: 1em
-	background-color: #fff
-	margin-bottom: 1em
+.question-container
+	.question
+		border-radius: 10px
+		padding: 1em
+		background-color: #fff
+		margin-bottom: 1em
+	.lang
+		display: flex
+		align-items: center
+		justify-content: center
+	.lang-button
+		background-color: #D9D9D9
+		border: 1px solid #A4A4A4
+		font-size: 1.2em
+		text-align: center
+		border-radius: 5px
+		margin-right: 0.3vw
+	.active
+		background-color: #36AE36
+		border: 1px solid #1F741F
+	.hint
+		border-radius: 50px
+		width: 5%
+		background-color: #D9D9D9
+		border: 1px solid #A4A4A4
+		text-align: center
+		cursor: pointer
+
 
 .answer
 	display: flex
@@ -175,13 +266,11 @@ footer
 	
 	.game
 		flex-direction: column
-		.game-menu_header
-			display: none
-		.button-block
-			position: absolute
-			top: 1em
-			align-items: center
-			justify-content: center
-			flex-direction: row !important
-	
 
+	.coast
+		width: 100%
+		.game-menu_header
+			width: 100%
+			text-align: auto
+	.button-block
+		flex-direction: row

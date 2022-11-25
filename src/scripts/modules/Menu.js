@@ -35,25 +35,25 @@ export default class Menu {
         this.field.innerHTML = slide();
     }
     slideStart() {
-        return `<button class="btn btn-start">Play</button>`;
+        return `<button class="btn btn-start">Играть</button>`;
     }
     slideMode() {
         return `
 		<div class="menu">
 			<div class="row">
-				<h2 class="menu-mode_header">Game mode</h2>
+				<h2 class="menu-mode_header">Режим игры</h2>
 			</div>
 			<!--row-->
 			<div class="row buttons-mode d-flex">
 				<div class="col col-4">
 					<button class="btn btn-menu" data-mode="single">
-						Single player
+						Одиночный
 					</button>
 				</div>
 				<!--col-->
 				<div class="col col-4">
 					<button class="btn btn-menu" data-mode="dual">
-						Dual player
+						Два игрока
 					</button>
 				</div>
 				<!--col-->
@@ -66,26 +66,26 @@ export default class Menu {
     slideNickname() {
         return `
 		<div class="menu">
-			<h2 class="menu-mode_header">Enter nickname</h2>
+			<h2 class="menu-mode_header">Введите имя</h2>
 			<div class="row">
 				<div class="col flex-column">
-					<label for="text" class="input-label">Player 1</label>
+					<label for="text" class="input-label">Игрок 1</label>
 					<div class="nickname-wrapper">
-						<input type="text" class="nickname-1" placeholder="Nickname">
+						<input type="text" class="nickname-1" placeholder="Ваше имя">
 					</div>
 				</div>
 				<!--col-->
 				<div class="col flex-column dual hide">
-					<label for="text" class="input-label">Player 2</label>
+					<label for="text" class="input-label">Игрок 2</label>
 					<div class="nickname-wrapper">
-						<input type="text" class="nickname-2" placeholder="Nickname">
+						<input type="text" class="nickname-2" placeholder="Ваше имя">
 					</div>
 				</div>
 				<!--col-->
 			</div>
 			<!--row-->
 			<div class="row mt-4">
-				<button class="btn btn-menu btn-nick">Next</button>
+				<button class="btn btn-menu btn-nick">Дальше</button>
 			</div>
 			<!--row-->
 		</div>
@@ -97,7 +97,7 @@ export default class Menu {
 		<div class="menu">
 			<div class="container d-flex flex-column">
 				<h2 class="menu-mode_header">
-					Which start coast of question?
+					Выберите начальную стоимость вопроса
 				</h2>	
 				<div class="container">
 					<div class="buttons">

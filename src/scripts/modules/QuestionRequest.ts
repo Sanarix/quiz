@@ -6,6 +6,6 @@ export default class QuestionRequest {
 	}
 
 	getUrl(coast: number) {
-		return `http://jservice.io/api/random?count=100`
+		return `http://jservice.io/api/random?count=${coast}`
 	}
 }
