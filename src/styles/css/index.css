@@ -278,11 +278,11 @@ main {
   flex-direction: column;
   height: 30%;
   padding: 0.5em;
-  margin-top: 15%;
+  margin-top: 10%;
 }
 .answer-container .answer {
   width: 100%;
-  min-height: 8vh;
+  min-height: 5vh;
   border-radius: 10px;
   border: none;
   background-color: #F5F1DD;
@@ -296,6 +296,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin-top: 5%;
 }
 .answer-container .buttons-container .btn-interface {
   background-color: #5258EC;
