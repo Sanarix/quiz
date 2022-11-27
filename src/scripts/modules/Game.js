@@ -11,10 +11,12 @@ import QuestionRequest from './QuestionRequest';
 import requestHandler from '../functions/requestHandler';
 import TranslateRequest from './TranslateRequest';
 import gameHandler from '../functions/gameHandler';
+import Timer from '../modules/Timer.js';
 export default class Game {
     constructor() {
         this.QuestionRequest = new QuestionRequest();
         this.TranslateRequest = new TranslateRequest();
+        this.timer = new Timer();
         this.score1 = 0;
         this.score2 = 0;
         this.question = '';
@@ -34,6 +36,7 @@ export default class Game {
                 this.question = result.question;
                 this.answer = result.answer;
                 document.querySelector('.question').textContent = this.question;
+                this.startTimer();
             });
             gameHandler(this, this.settings);
             //Временно отключен перевод из за лимита запросов в месяц 11/500
@@ -48,13 +51,16 @@ export default class Game {
             }
         }
     }
+    startTimer() {
+        this.timer.startTimer();
+    }
     stop() { }
     renderGame(element, settings, score1, score2) {
         element.innerHTML = `
 		<div class="game"> 
 			<div class="game-body">
 				<div class="control">
-				<h2 class="game-menu_header">Выберите стоимость вопроса</h2>
+				<h2 class="control-header">Выберите стоимость вопроса</h2>
 				<div class="button-block">
 					<div class="btn-mode">200</div>
 					<div class="btn-mode">300</div>
@@ -87,15 +93,15 @@ export default class Game {
 						<!--language-->
 					</div>
 					<!--question-container-->
-					<div class="container answer">
+					<div class="container answer-container">
 						<input type="text" class="answer" placeholder="Введите ответ">
-						<div class="btn-container">
+						<div class="buttons-container">
 							<button class="btn-interface submit">Ответить!</button>
 							<button class="btn-interface giveup">Передать ход</button>
 						</div>
 						<!--btn-container-->
 					</div>
-					<!--container answer-->
+					<!--container answer-container-->
 					<div class="row players-score">
 						<div class="scores">
 							<div class="score-1">${settings.player1 + ':'} <span class="pscore-1">${score1}</span></div>

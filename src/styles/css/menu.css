@@ -30,6 +30,10 @@
 
 .nickname-wrapper input {
   border-radius: 10px;
+  border: 1px solid silver;
+}
+.nickname-wrapper input:focus {
+  outline: none;
 }
 
 .highlight {

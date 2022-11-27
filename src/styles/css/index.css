@@ -56,7 +56,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 50%;
   height: 100%;
   border-radius: 10px;
   padding: 1em;
@@ -135,7 +135,7 @@ main {
   font-size: 1.4em;
   text-decoration: underline;
 }
-.game-body .control .game-menu_header {
+.game-body .control .control-header {
   font-size: 1em;
   text-align: center;
 }
@@ -270,7 +270,7 @@ main {
   cursor: pointer;
 }
 
-.answer {
+.answer-container {
   position: relative;
   display: flex;
   align-items: center;
@@ -278,27 +278,33 @@ main {
   flex-direction: column;
   height: 30%;
   padding: 0.5em;
-  margin-top: 5%;
+  margin-top: 15%;
 }
-.answer input {
+.answer-container .answer {
   width: 100%;
-  min-height: 5vh;
+  min-height: 8vh;
   border-radius: 10px;
   border: none;
   background-color: #F5F1DD;
+  padding: 10px;
 }
-.answer input:active, .answer input:focus {
+.answer-container .answer:active, .answer-container .answer:focus {
   outline: none;
 }
-
-.btn-interface {
+.answer-container .buttons-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.answer-container .buttons-container .btn-interface {
   background-color: #5258EC;
   color: white;
   padding: 10px;
   border-radius: 5px;
-  margin-top: 10%;
+  width: 30%;
 }
-.btn-interface:hover {
+.answer-container .buttons-container .btn-interface:hover {
   color: inherit;
   background-color: #fff;
 }
@@ -325,13 +331,13 @@ main {
     width: 100%;
     padding: 0.5em;
   }
-
-  .btn-mode {
-    width: 100%;
-    font-size: 1em;
-  }
 }
+/*Мобильная версия */
 @media screen and (max-width: 720px) {
+  html, body {
+    overflow: hidden !important;
+  }
+
   main {
     height: 100%;
     width: 100%;
@@ -346,19 +352,70 @@ main {
     padding: 0;
   }
 
-  .game {
+  .game-body {
     flex-direction: column;
   }
-
-  .coast {
+  .game-body .control {
     width: 100%;
   }
-  .coast .game-menu_header {
-    width: 100%;
-    text-align: auto;
-  }
-
-  .button-block {
+  .game-body .control .button-block {
     flex-direction: row;
+  }
+  .game-body .control .rules {
+    display: none;
+  }
+  .game-body .interface {
+    width: 100%;
+  }
+  .game-body .interface-header::after {
+    left: -5%;
+    width: 110%;
+  }
+  .game-body .interface-header .timer {
+    border: none;
+    position: relative;
+    width: 30%;
+    height: 100%;
+    font-size: 5em;
+    padding: 10px;
+    margin: 0;
+  }
+  .game-body .interface-header .timer::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -15%;
+    left: 0;
+    width: 4px;
+    height: 115%;
+    background-color: #B66415;
+  }
+  .game-body .lang {
+    justify-content: center;
+  }
+  .game-body .lang .lang-button {
+    margin-right: 5%;
+    width: 20%;
+  }
+  .game-body .lang .hint {
+    width: 7%;
+  }
+  .game-body .answer-container {
+    margin-top: 10%;
+  }
+  .game-body .answer-container .answer {
+    margin-top: 20%;
+    padding: 10px;
+  }
+  .game-body .answer-container .buttons-container {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .game-body .answer-container .buttons-container .btn-interface {
+    width: 100%;
+    height: 40%;
+    margin-top: 10%;
   }
 }
