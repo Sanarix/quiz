@@ -121,12 +121,19 @@ main {
   left: 0;
   content: "";
   display: block;
-  width: 100%;
+  width: 335%;
   height: 4px;
   background-color: #B66415;
 }
 .game-body .control .rules {
   margin-top: 2vh;
+}
+.game-body .control .rules .btn-rules {
+  border: none;
+  background-color: inherit;
+  color: #406BDA;
+  font-size: 1.4em;
+  text-decoration: underline;
 }
 .game-body .control .game-menu_header {
   font-size: 1em;
@@ -151,10 +158,12 @@ main {
   cursor: pointer;
 }
 .game-body .interface {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 60%;
+  width: 70%;
+  padding: 0 10px;
 }
 .game-body .interface-header {
   position: relative;
@@ -165,10 +174,10 @@ main {
 .game-body .interface-header::after {
   position: absolute;
   top: 100%;
-  left: -16%;
+  left: -1.5%;
   content: "";
   display: block;
-  width: 116%;
+  width: 103.5%;
   height: 4px;
   background-color: #B66415;
 }
@@ -190,14 +199,6 @@ main {
 .coast {
   margin-bottom: 2em;
   text-align: center;
-}
-
-.players-score .scores {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 2em;
 }
 
 .button-block {
@@ -233,16 +234,20 @@ main {
   background-color: #cc6633;
 }
 
+.question-container {
+  margin-top: 2vh;
+}
 .question-container .question {
+  min-height: 100%;
   border-radius: 10px;
   padding: 1em;
-  background-color: #fff;
+  background-color: #F5F1DD;
   margin-bottom: 1em;
 }
 .question-container .lang {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 .question-container .lang-button {
   background-color: #D9D9D9;
@@ -266,23 +271,48 @@ main {
 }
 
 .answer {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 50%;
+  flex-direction: column;
+  height: 30%;
   padding: 0.5em;
+  margin-top: 5%;
 }
 .answer input {
-  width: 70%;
+  width: 100%;
+  min-height: 5vh;
   border-radius: 10px;
   border: none;
+  background-color: #F5F1DD;
 }
 .answer input:active, .answer input:focus {
   outline: none;
 }
 
-footer {
-  height: 10%;
+.btn-interface {
+  background-color: #5258EC;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10%;
+}
+.btn-interface:hover {
+  color: inherit;
+  background-color: #fff;
+}
+
+.players-score {
+  position: absolute;
+  bottom: 3%;
+  left: 2%;
+  left-display: flex;
+  left-align-items: center;
+  left-justify-content: space-between;
+  left-width: 100%;
+  left-margin-bottom: 2em;
+  left-padding: 0 2vw;
 }
 
 /*Дополнительные стили */

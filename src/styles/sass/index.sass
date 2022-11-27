@@ -93,11 +93,17 @@ main
 				left: 0
 				content: ''
 				display: block
-				width: 100%
+				width: 335%
 				height: 4px
 				background-color: #B66415
 		.rules
 			margin-top: 2vh
+			.btn-rules
+				border: none
+				background-color: inherit
+				color: #406BDA
+				font-size: 1.4em
+				text-decoration: underline
 		.game-menu_header
 			font-size: 1em
 			text-align: center
@@ -119,10 +125,12 @@ main
 				cursor: pointer
 
 	.interface
+		position: relative
 		display: flex
 		flex-direction: column
 		height: 100%
-		width: 60%
+		width: 70%
+		padding: 0 10px
 		&-header
 			position: relative
 			display: flex
@@ -131,10 +139,10 @@ main
 			&::after
 				position: absolute
 				top: 100%
-				left: -16%
+				left: -1.5%
 				content: ''
 				display: block
-				width: 116%
+				width: 103.5%
 				height: 4px
 				background-color: #B66415
 			.current-player
@@ -154,14 +162,6 @@ main
 	margin-bottom: 2em
 	.game-menu_header
 	text-align: center
-
-.players-score
-	.scores
-		display: flex
-		align-items: center
-		justify-content: space-between
-		width: 100%
-		margin-bottom: 2em
 
 .button-block
 	display: flex
@@ -191,15 +191,17 @@ main
 	background-color: rgb(204, 102, 51)
 
 .question-container
+	margin-top: 2vh
 	.question
+		min-height: 100%
 		border-radius: 10px
 		padding: 1em
-		background-color: #fff
+		background-color: #F5F1DD
 		margin-bottom: 1em
 	.lang
 		display: flex
 		align-items: center
-		justify-content: center
+		justify-content: flex-end
 	.lang-button
 		background-color: #D9D9D9
 		border: 1px solid #A4A4A4
@@ -220,22 +222,43 @@ main
 
 
 .answer
+	position: relative
 	display: flex
 	align-items: center
 	justify-content: space-between
-	height: 50%
+	flex-direction: column
+	height: 30%
 	padding: 0.5em
+	margin-top: 5%
 	input
-		width: 70%
+		width: 100%
+		min-height: 5vh
 		border-radius: 10px
 		border: none
+		background-color: #F5F1DD
 		&:active, &:focus
 			outline: none
 
-footer 
-	height: 10%
+.btn-interface
+	background-color: #5258EC
+	color: white
+	padding: 10px
+	border-radius: 5px
+	margin-top: 10%
+	&:hover
+		color: inherit
+		background-color: #fff
 
-
+.players-score
+	position: absolute
+	bottom: 3%
+	left: 2%
+		display: flex
+		align-items: center
+		justify-content: space-between
+		width: 100%
+		margin-bottom: 2em
+		padding: 0 2vw
 
 /*Дополнительные стили*/
 	

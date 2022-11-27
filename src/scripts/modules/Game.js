@@ -64,7 +64,7 @@ export default class Game {
 				</div>
 				<!--buttons-->
 				<div class="rules">
-					<button>Правила игры</button>
+					<button class="btn-rules">Правила игры</button>
 				</div>
 				<!---->
 				</div>
@@ -80,7 +80,7 @@ export default class Game {
 						</div>
 						<!--question-->
 						<div class="lang">
-							<button class="lang-button">en</button>
+							<button class="lang-button active">en</button>
 							<button class="lang-button">ru</button>
 							<div class="hint">?</div>
 						</div>
@@ -89,7 +89,11 @@ export default class Game {
 					<!--question-container-->
 					<div class="container answer">
 						<input type="text" class="answer" placeholder="Введите ответ">
-						<button class="btn btn-answer">Ответить!</button>
+						<div class="btn-container">
+							<button class="btn-interface submit">Ответить!</button>
+							<button class="btn-interface giveup">Передать ход</button>
+						</div>
+						<!--btn-container-->
 					</div>
 					<!--container answer-->
 					<div class="row players-score">
