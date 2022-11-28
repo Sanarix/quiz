@@ -262,8 +262,12 @@ main {
   border: 1px solid #1F741F;
 }
 .question-container .hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
   border-radius: 50px;
-  width: 5%;
   background-color: #D9D9D9;
   border: 1px solid #A4A4A4;
   text-align: center;
@@ -361,6 +365,7 @@ main {
   }
   .game-body .control .button-block {
     flex-direction: row;
+    justify-content: space-around;
   }
   .game-body .control .rules {
     display: none;
@@ -397,9 +402,6 @@ main {
   .game-body .lang .lang-button {
     margin-right: 5%;
     width: 20%;
-  }
-  .game-body .lang .hint {
-    width: 7%;
   }
   .game-body .answer-container {
     margin-top: 10%;

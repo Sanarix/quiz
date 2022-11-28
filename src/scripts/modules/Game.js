@@ -36,8 +36,8 @@ export default class Game {
                 this.question = result.question;
                 this.answer = result.answer;
                 document.querySelector('.question').textContent = this.question;
-                this.startTimer();
             });
+            this.startTimer();
             gameHandler(this, this.settings);
             //Временно отключен перевод из за лимита запросов в месяц 11/500
             // this.TranslateRequest.request(this.question, this.answer);
@@ -78,7 +78,7 @@ export default class Game {
 				<div class="interface">
 					<header class="container interface-header">
 					<div class="current-player">Отвечает: ${'currentPlayer'}</div>
-					<div class="timer">${'23'}</div>
+					<div class="timer">30</div>
 					</header>
 					<div class="question-container">
 						<div class="question">
