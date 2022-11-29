@@ -70,13 +70,29 @@ export default class Game {
 		this.Timer.startTimer();
 	}
 
+	openGameModal(header: string, body: string) {
+		this.Modal.renderModal(header, body);
+		this.Modal.open(this);
+	}
+
 	renderRules() {
 		const header = 'Правила игры';
 		const body = `
-		Описание правил со скриншотами важных мест
+			Описание правил со скриншотами важных мест
 		`;
-		this.Modal.renderModal(header, body);
-		this.Modal.open(this);
+		this.openGameModal(header, body);
+	}
+
+	renderHint() {
+		const header = 'Подсказка по использованию перевода';
+		const body = `
+		Оригинальный текст вопроса представлен на английском языке. Если Ваш уровень английского недостаточен для ответов на вопросы, вы можете переключится на русский язык.
+		Важно!
+		При использовании перевода, возможны неточности и искажения, что в конечном итоге может повлиять на правильность ответа.
+
+		Ответ предпочтительней давать на английском языке, так как при ответе на русском, возможны несовпадения с оригиналом ответа, в связи с возможным искажением слова/слов при автоматическом переводе.
+		`;
+		this.openGameModal(header, body);
 	}
 
 	renderGame(element: HTMLElement, settings: any, score1: number, score2: number) {
