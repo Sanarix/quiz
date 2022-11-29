@@ -11,17 +11,19 @@ import QuestionRequest from './QuestionRequest';
 import requestHandler from '../functions/requestHandler';
 import TranslateRequest from './TranslateRequest';
 import gameHandler from '../functions/gameHandler';
-import Timer from '../modules/Timer.js';
+import Timer from '../modules/Timer';
+import Modal from '../modules/Modal';
 export default class Game {
     constructor() {
         this.QuestionRequest = new QuestionRequest();
         this.TranslateRequest = new TranslateRequest();
-        this.timer = new Timer();
+        this.Timer = new Timer();
         this.score1 = 0;
         this.score2 = 0;
         this.question = '';
         this.answer = '';
         this.settings;
+        this.Modal = new Modal();
     }
     start(element, settings) {
         this.settings = settings;
@@ -52,9 +54,16 @@ export default class Game {
         }
     }
     startTimer() {
-        this.timer.startTimer();
+        this.Timer.startTimer();
     }
-    stop() { }
+    renderRules() {
+        const header = 'Правила игры';
+        const body = `
+		Описание правил со скриншотами важных мест
+		`;
+        this.Modal.renderModal(header, body);
+        this.Modal.open();
+    }
     renderGame(element, settings, score1, score2) {
         element.innerHTML = `
 		<div class="game"> 

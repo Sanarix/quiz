@@ -1,5 +1,6 @@
 export default function gameHandler(context, settings) {
     const buttonBlock = document.querySelector('.button-block');
+    const buttonRules = document.querySelector('.btn-rules');
     buttonBlock.addEventListener('click', (e) => {
         const target = e.target;
         if (target.classList.contains('btn-mode')) {
@@ -12,4 +13,5 @@ export default function gameHandler(context, settings) {
             target.classList.add('active');
         }
     });
+    buttonRules.addEventListener('click', context.renderRules.bind(context));
 }

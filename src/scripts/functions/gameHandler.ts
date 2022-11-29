@@ -1,5 +1,6 @@
 export default function gameHandler(context: any, settings: Object) {
 	const buttonBlock = document.querySelector('.button-block');
+	const buttonRules = document.querySelector('.btn-rules');
 
 	buttonBlock.addEventListener('click', (e: any) => {
 		const target = e.target;
@@ -13,4 +14,6 @@ export default function gameHandler(context: any, settings: Object) {
 			target.classList.add('active');
 		}
 	})
+
+	buttonRules.addEventListener('click', context.renderRules.bind(context));
 }
