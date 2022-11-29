@@ -23,7 +23,7 @@ export default class Game {
         this.question = '';
         this.answer = '';
         this.settings;
-        this.Modal = new Modal();
+        this.Modal = new Modal(this);
     }
     start(element, settings) {
         this.settings = settings;
@@ -62,7 +62,7 @@ export default class Game {
 		Описание правил со скриншотами важных мест
 		`;
         this.Modal.renderModal(header, body);
-        this.Modal.open();
+        this.Modal.open(this);
     }
     renderGame(element, settings, score1, score2) {
         element.innerHTML = `
