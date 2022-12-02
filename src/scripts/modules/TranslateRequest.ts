@@ -10,13 +10,15 @@ export default class TranslateRequest {
 		this.config = config;
 	}
 
-	async request(question: string, answer: any) {
+	async request(question: string, answer: any, Game: any) {
 		this.getOptions(question, answer)
 		await fetch('https://translate-plus.p.rapidapi.com/translate', this.options)
 		.then(response => response.json())
-		//TODO сделать вывод перевода в .question
-		//результат в виде ['Сериал Стивена Дж. Каннелла 1970-х ', ' <i>The Rockford Files</i>']
-		.then(response => {const res = response.translations.translation.split(':::'); console.log(res)})
+		//результат в виде ['Сериал Стивена Дж. Каннелла 1970-х ', ' The Rockford Files']
+		.then(response => {const res = response.translations.translation.split(':::');
+		Game.questionRu = res[0];
+		Game.answerRu = res[1];
+		})
 		.catch(err => console.error(err));
 	}
 

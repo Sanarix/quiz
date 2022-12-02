@@ -22,7 +22,10 @@ export default class Game {
         this.score2 = 0;
         this.question = '';
         this.answer = '';
+        this.questionRu = 'Переведённый текст вопроса'; //TODO убрать текст заглушку
+        this.answerRu = '';
         this.settings;
+        this.lang = 'en';
         this.Modal = new Modal(this);
     }
     start(element, settings) {
@@ -37,12 +40,11 @@ export default class Game {
                 then((json) => { return requestHandler(json, settings.currentCoast); }).then((result) => {
                 this.question = result.question;
                 this.answer = result.answer;
-                document.querySelector('.question').textContent = this.question;
             });
-            this.startTimer();
+            //Временно отключен перевод из за лимита запросов в месяц 32/500	
+            // await this.TranslateRequest.request(this.question, this.answer, this);
             gameHandler(this, this.settings);
-            //Временно отключен перевод из за лимита запросов в месяц 11/500
-            // this.TranslateRequest.request(this.question, this.answer);
+            this.startTimer();
         });
     }
     setActiveCoastButton(settings) {

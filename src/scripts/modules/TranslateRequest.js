@@ -13,14 +13,17 @@ export default class TranslateRequest {
         this.options;
         this.config = config;
     }
-    request(question, answer) {
+    request(question, answer, Game) {
         return __awaiter(this, void 0, void 0, function* () {
             this.getOptions(question, answer);
             yield fetch('https://translate-plus.p.rapidapi.com/translate', this.options)
                 .then(response => response.json())
-                //TODO сделать вывод перевода в .question
-                //результат в виде ['Сериал Стивена Дж. Каннелла 1970-х ', ' <i>The Rockford Files</i>']
-                .then(response => { const res = response.translations.translation.split(':::'); console.log(res); })
+                //результат в виде ['Сериал Стивена Дж. Каннелла 1970-х ', ' The Rockford Files']
+                .then(response => {
+                const res = response.translations.translation.split(':::');
+                Game.questionRu = res[0];
+                Game.answerRu = res[1];
+            })
                 .catch(err => console.error(err));
         });
     }

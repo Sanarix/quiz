@@ -20,7 +20,10 @@ export default class Game {
 	private score2: number;
 	private question: string;
 	private answer: string;
+	private questionRu: string;
+	private answerRu: string;
 	private settings: ISettings;
+	private lang: string;
 	private Timer: Timer;
 	private Modal: Modal;
 
@@ -32,7 +35,10 @@ export default class Game {
 		this.score2 = 0;
 		this.question = '';
 		this.answer = '';
+		this.questionRu = 'Переведённый текст вопроса';//TODO убрать текст заглушку
+		this.answerRu = '';
 		this.settings;
+		this.lang = 'en';
 		this.Modal = new Modal(this);
 	}
 
@@ -48,12 +54,11 @@ export default class Game {
 		then((json) => {return requestHandler(json, settings.currentCoast)}).then((result: any) => {
 			this.question = result.question;
 			this.answer = result.answer;
-			document.querySelector('.question').textContent = this.question;
 		});
+		//Временно отключен перевод из за лимита запросов в месяц 32/500	
+		// await this.TranslateRequest.request(this.question, this.answer, this);
+		gameHandler(this, this.settings);	
 		this.startTimer();
-		gameHandler(this, this.settings)
-		//Временно отключен перевод из за лимита запросов в месяц 11/500
-		// this.TranslateRequest.request(this.question, this.answer);
 	}
 
 	setActiveCoastButton(settings: ISettings) {
