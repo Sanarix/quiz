@@ -26,6 +26,7 @@ export default class Game {
 	private lang: string;
 	private Timer: Timer;
 	private Modal: Modal;
+	private respondingPlayer: string | number;
 
 	constructor() {
 		this.QuestionRequest = new QuestionRequest();
@@ -40,10 +41,12 @@ export default class Game {
 		this.settings;
 		this.lang = 'en';
 		this.Modal = new Modal(this);
+		this.respondingPlayer = '';
 	}
 
 	start(element: HTMLElement, settings: ISettings) {
 		this.settings = settings;
+		this.setRespondingPlayer();
 		this.renderGame(element, settings, this.score1, this.score2);
 		this.setActiveCoastButton(this.settings);
 		this.nextQuestion(settings);
@@ -59,6 +62,13 @@ export default class Game {
 		// await this.TranslateRequest.request(this.question, this.answer, this);
 		gameHandler(this, this.settings);	
 		this.startTimer();
+	}
+
+	setRespondingPlayer() {
+		if(this.respondingPlayer === this.settings.player1 && this.settings.player2) {
+			this.respondingPlayer = this.settings.player2;
+		}
+		this.respondingPlayer = this.settings.player1;
 	}
 
 	setActiveCoastButton(settings: ISettings) {
@@ -122,7 +132,7 @@ export default class Game {
 				<!--control-->
 				<div class="interface">
 					<header class="container interface-header">
-					<div class="current-player">Отвечает: ${'currentPlayer'}</div>
+					<div class="current-player">Отвечает: ${this.respondingPlayer}</div>
 					<div class="timer">30</div>
 					</header>
 					<div class="question-container">

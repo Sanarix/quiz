@@ -5,6 +5,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "sourceMap": false,
+    "watch": true
   },
   "include": [
     "./src/scripts/"

@@ -316,14 +316,16 @@ main {
 
 .players-score {
   position: absolute;
-  bottom: 3%;
+  bottom: 0;
   left: 2%;
-  left-display: flex;
-  left-align-items: center;
-  left-justify-content: space-between;
-  left-width: 100%;
-  left-margin-bottom: 2em;
-  left-padding: 0 2vw;
+}
+.players-score .scores {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 0 2vw;
 }
 
 /*Дополнительные стили */
