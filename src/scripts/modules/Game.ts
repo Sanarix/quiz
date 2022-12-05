@@ -4,6 +4,7 @@ import TranslateRequest from './TranslateRequest'
 import gameHandler from '../functions/gameHandler'
 import Timer from '../modules/Timer'
 import Modal from '../modules/Modal'
+import Step from '../modules/Step'
 
 interface ISettings {
 	mode: string;
@@ -26,6 +27,7 @@ export default class Game {
 	private lang: string;
 	private Timer: Timer;
 	private Modal: Modal;
+	private Step: Step;
 	private respondingPlayer: string | number;
 
 	constructor() {
@@ -41,12 +43,13 @@ export default class Game {
 		this.settings;
 		this.lang = 'en';
 		this.Modal = new Modal(this);
+		this.Step;
 		this.respondingPlayer = '';
 	}
 
 	start(element: HTMLElement, settings: ISettings) {
 		this.settings = settings;
-		this.setRespondingPlayer();
+		this.Step = new Step(settings.player1, settings.player2);
 		this.renderGame(element, settings, this.score1, this.score2);
 		this.setActiveCoastButton(this.settings);
 		this.nextQuestion(settings);
@@ -62,13 +65,6 @@ export default class Game {
 		// await this.TranslateRequest.request(this.question, this.answer, this);
 		gameHandler(this, this.settings);	
 		this.startTimer();
-	}
-
-	setRespondingPlayer() {
-		if(this.respondingPlayer === this.settings.player1 && this.settings.player2) {
-			this.respondingPlayer = this.settings.player2;
-		}
-		this.respondingPlayer = this.settings.player1;
 	}
 
 	setActiveCoastButton(settings: ISettings) {

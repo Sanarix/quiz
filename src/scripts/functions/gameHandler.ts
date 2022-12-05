@@ -3,6 +3,8 @@ export default function gameHandler(Game: any, settings: Object) {
 	const langButtons = document.querySelector('.lang');
 	const buttonRules = document.querySelector('.btn-rules');
 	const buttonHint = document.querySelector('.hint');
+	const submitButton = document.querySelector('.submit');
+	const answerContainer: HTMLInputElement = document.querySelector('.answer');
 
 	if(Game.lang === 'en') {
 		document.querySelector('.question').textContent = Game.question;
@@ -49,4 +51,5 @@ export default function gameHandler(Game: any, settings: Object) {
 
 	buttonRules.addEventListener('click', Game.renderRules.bind(Game));
 	buttonHint.addEventListener('click', Game.renderHint.bind(Game));
+	submitButton.addEventListener('click', () => Game.Step.next(Game.answer, Game.answerRu, answerContainer.value));
 }

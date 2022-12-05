@@ -13,6 +13,7 @@ import TranslateRequest from './TranslateRequest';
 import gameHandler from '../functions/gameHandler';
 import Timer from '../modules/Timer';
 import Modal from '../modules/Modal';
+import Step from '../modules/Step';
 export default class Game {
     constructor() {
         this.QuestionRequest = new QuestionRequest();
@@ -27,11 +28,12 @@ export default class Game {
         this.settings;
         this.lang = 'en';
         this.Modal = new Modal(this);
+        this.Step;
         this.respondingPlayer = '';
     }
     start(element, settings) {
         this.settings = settings;
-        this.setRespondingPlayer();
+        this.Step = new Step(settings.player1, settings.player2);
         this.renderGame(element, settings, this.score1, this.score2);
         this.setActiveCoastButton(this.settings);
         this.nextQuestion(settings);
@@ -48,12 +50,6 @@ export default class Game {
             gameHandler(this, this.settings);
             this.startTimer();
         });
-    }
-    setRespondingPlayer() {
-        if (this.respondingPlayer === this.settings.player1 && this.settings.player2) {
-            this.respondingPlayer = this.settings.player2;
-        }
-        this.respondingPlayer = this.settings.player1;
     }
     setActiveCoastButton(settings) {
         const buttonBlock = document.querySelector('.button-block');
