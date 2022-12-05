@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 export default class QuestionRequest {
     request(coast) {
         return __awaiter(this, void 0, void 0, function* () {
+            //Запрашиваем вопрос и ответ с заданной стоимостью
             const data = yield fetch(this.getUrl(coast)).then((responce) => { return responce; });
             return yield data.json();
         });

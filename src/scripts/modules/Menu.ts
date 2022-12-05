@@ -2,7 +2,7 @@ import menuHandler from '../functions/menuHandler'
 import Game from '../modules/Game'
 
 interface ISettings {
-	mode: string;
+	singleMode: boolean;
 	player1: string;
 	player2: string;
 	currentCoast: number;
@@ -11,7 +11,7 @@ interface ISettings {
 export default class Menu {
 
 	private field: HTMLElement;
-	private mode: string;
+	private singleMode: boolean;
 	private player1: string;
 	private player2: string;
 	private orderSlides: Array<Function>;
@@ -21,7 +21,7 @@ export default class Menu {
 
 	constructor() {
 		this.field = document.querySelector('.game-field');
-		this.mode;
+		this.singleMode = true;
 		this.player1 = null;
 		this.player2 = null;
 		this.orderSlides = [
@@ -41,7 +41,7 @@ export default class Menu {
 				menuHandler(this);
 			}else {
 				let settings: ISettings = {
-					mode: this.mode,
+					singleMode: this.singleMode,
 					player1: this.player1,
 					player2: this.player2,
 					currentCoast: +this.coast,

@@ -3,7 +3,7 @@ import Game from '../modules/Game';
 export default class Menu {
     constructor() {
         this.field = document.querySelector('.game-field');
-        this.mode;
+        this.singleMode = true;
         this.player1 = null;
         this.player2 = null;
         this.orderSlides = [
@@ -23,7 +23,7 @@ export default class Menu {
         }
         else {
             let settings = {
-                mode: this.mode,
+                singleMode: this.singleMode,
                 player1: this.player1,
                 player2: this.player2,
                 currentCoast: +this.coast,

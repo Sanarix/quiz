@@ -7,7 +7,7 @@ import Modal from '../modules/Modal'
 import Step from '../modules/Step'
 
 interface ISettings {
-	mode: string;
+	singleMode: boolean;
 	player1: string;
 	player2: string;
 	currentCoast: number;
@@ -63,6 +63,7 @@ export default class Game {
 		});
 		//Временно отключен перевод из за лимита запросов в месяц 32/500	
 		// await this.TranslateRequest.request(this.question, this.answer, this);
+		//Назначаем все обработчики событий через handler
 		gameHandler(this, this.settings);	
 		this.startTimer();
 	}

@@ -1,29 +1,22 @@
-interface IResponceJSON {
-	airdate: string,
-	answer: string,
-	category: Object,
-	category_id: number,
-	created_at: string,
-	game_id: number,
-	id: number,
-	invalid_count: null,
-	question: string,
-	updated_at: string,
-	value: number
-}
-
+/*
+Получаем массив с объектами содержащими вопрос, ответ и т.д.
+Кол-во объектов около 100 штук
+*/
 export default function responceHandler(
 																				data: Array<Object>,
 																				currentCoast: number
 																				){
-	const dataArray = data;
+	const responsesArray = data;
+	/*
+	Если среди объектов есть подходящий по выбраной стоимости
+	Из его вопроса и ответа создаём новый объект и возвращаем его
+	*/
+	let suitableObj: any = responsesArray.find((responseObj:any) => {if(responseObj.value === currentCoast) {return responseObj}});
 
-	let result: any = dataArray.find((obj:any) => {if(obj.value === currentCoast) {return obj}});
-
-	if(result) {
+	if(suitableObj) {
 		return {
-			question: result.question,
-			answer: result.answer,
+			question: suitableObj.question,
+			answer: suitableObj.answer,
 		}	
 	}else {
 		throw new Error('Coast of question is not defined');

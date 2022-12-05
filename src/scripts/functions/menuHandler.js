@@ -1,26 +1,30 @@
-export default function menuHandler(context) {
+export default function menuHandler(Menu) {
     let buttons = document.querySelectorAll('.btn-menu');
-    if (context.mode === 'dual') {
+    if (!Menu.singleMode) {
         if (document.querySelector('.dual')) {
             document.querySelector('.dual').classList.remove('hide');
         }
     }
     for (let button of buttons) {
         button.addEventListener('click', (e) => {
-            if (e.currentTarget.dataset.mode) {
-                context.mode = e.currentTarget.dataset.mode;
+            //Меняем режим игры при нажатии кнопки "Два игрока"
+            if (e.currentTarget.dataset.mode === 'dual') {
+                Menu.singleMode = false;
             }
+            //При переходе к вводу ников определяем их инпуты
             if (e.currentTarget.classList.contains('btn-nick')) {
                 const nickname1 = document.querySelector('.nickname-1');
                 const nickname2 = document.querySelector('.nickname-2');
+                //Подсветка ников если не введён хотябы один символ
                 if (!nickname1.value) {
                     nickname1.parentElement.classList.add('highlight');
                     setTimeout(() => {
                         nickname1.parentElement.classList.remove('highlight');
                     }, 1600);
                     return;
+                    //При наличии второй строки для имени проверяем её на заполненость
                 }
-                else if (context.mode === 'dual' && !nickname2.value) {
+                else if (!Menu.singleMode && !nickname2.value) {
                     nickname2.parentElement.classList.add('highlight');
                     setTimeout(() => {
                         nickname2.parentElement.classList.remove('highlight');
@@ -28,15 +32,16 @@ export default function menuHandler(context) {
                     return;
                 }
                 else {
-                    context.player1 = nickname1.value;
-                    context.player2 = nickname2.value;
+                    Menu.player1 = nickname1.value;
+                    Menu.player2 = nickname2.value;
                 }
             }
+            //Назначаем стартовую цену вопроса
             if (e.currentTarget.dataset.coast) {
-                context.coast = e.currentTarget.dataset.coast;
+                Menu.coast = e.currentTarget.dataset.coast;
             }
-            context.currentSlide++;
-            context.init();
+            Menu.currentSlide++;
+            Menu.init();
         });
     }
 }

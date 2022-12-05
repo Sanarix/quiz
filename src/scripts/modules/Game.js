@@ -47,6 +47,7 @@ export default class Game {
             });
             //Временно отключен перевод из за лимита запросов в месяц 32/500	
             // await this.TranslateRequest.request(this.question, this.answer, this);
+            //Назначаем все обработчики событий через handler
             gameHandler(this, this.settings);
             this.startTimer();
         });

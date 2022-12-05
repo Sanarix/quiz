@@ -1,12 +1,20 @@
+/*
+Получаем массив с объектами содержащими вопрос, ответ и т.д.
+Кол-во объектов около 100 штук
+*/
 export default function responceHandler(data, currentCoast) {
-    const dataArray = data;
-    let result = dataArray.find((obj) => { if (obj.value === currentCoast) {
-        return obj;
+    const responsesArray = data;
+    /*
+    Если среди объектов есть подходящий по выбраной стоимости
+    Из его вопроса и ответа создаём новый объект и возвращаем его
+    */
+    let suitableObj = responsesArray.find((responseObj) => { if (responseObj.value === currentCoast) {
+        return responseObj;
     } });
-    if (result) {
+    if (suitableObj) {
         return {
-            question: result.question,
-            answer: result.answer,
+            question: suitableObj.question,
+            answer: suitableObj.answer,
         };
     }
     else {
