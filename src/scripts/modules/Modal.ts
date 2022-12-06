@@ -7,7 +7,6 @@ export default class Modal {
 
 	constructor(Game: any) {
 		this.wrapper = document.querySelector('.modal-wrapper');
-		this.closeButton = this.wrapper.querySelector('.close');
 		this.Game = Game;
 	}
 
@@ -15,23 +14,25 @@ export default class Modal {
 		const modal = this.wrapper.querySelector('.modal-content');
 		modal.innerHTML = '';
 
-		const head = document.createElement('h3');
+		const header = document.createElement('h3');
 		const body = document.createElement('div');
 
-		head.className = "modal-header";
+		header.className = "modal-header";
 		body.className = "modal-body";
 
-		head.innerText = headerText;
+		header.innerText = headerText;
 		body.innerHTML = bodyText;
 		
-		modal.append(head);
+		modal.append(header);
 		modal.append(body);
-		this.closeButton.addEventListener('click', () => {this.close(this.Game)});
+
+		//Закрываем модальное окно, передаём Game для включения таймера
+		document.querySelector('.close').addEventListener('click', () => {this.close(this.Game)});	
 	}
 
-	open(Game: any) {
+	open(Timer: any) {
 		this.wrapper.classList.remove('hide')
-		Game.Timer.pauseTimer();
+		Timer.pauseTimer();
 	}
 
 	close(Game: any) {

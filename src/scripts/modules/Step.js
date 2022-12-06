@@ -1,16 +1,31 @@
 export default class Step {
-	constructor(player1, player2) {
+	constructor(player1, player2, Modal, Timer) {
 		this.player1 = player1;
 		this.player2 = player2 || null;
 		this.respondingPlayer = player1;
+		this.Modal = Modal
+		this.Timer = Timer;
 	}
 
 	next(gameAnswerEn, gameAnswerRu, playerAnswer) {
-		console.log('обработка ответа');
 		if(this.checkAnswer(gameAnswerEn, gameAnswerRu, playerAnswer)) {
+			this.openStepModal()
 			//добавить очки отвечавшему, вывести модалку о переходе хода
 			//сменить отвечающего игрока
 		}
+	}
+
+	openStepModal() {
+		const header = 'Конец хода';
+		const message = 'Ход передаётся дальше'
+		const body = `
+			Ответ ${'верный'}.
+			${message}
+		`;
+
+		this.Modal.renderModal(header, body);
+		console.log(this.Timer);
+		this.Modal.open(this.Timer);
 	}
 
 	changeRespondingPlayer() {

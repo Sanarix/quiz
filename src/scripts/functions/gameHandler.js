@@ -5,6 +5,7 @@ export default function gameHandler(Game, settings) {
     const buttonHint = document.querySelector('.hint');
     const submitButton = document.querySelector('.submit');
     const answerContainer = document.querySelector('.answer');
+    //Вывод вопроса в соответствии с выбранным языком
     if (Game.lang === 'en') {
         document.querySelector('.question').textContent = Game.question;
     }
@@ -14,6 +15,7 @@ export default function gameHandler(Game, settings) {
     else {
         throw new Error('Произошла ошибка. Неправильно определён язык');
     }
+    //Присваиваем стоимость вопроса, и делаем активной кнопку
     buttonBlock.addEventListener('click', (e) => {
         const target = e.target;
         if (target.classList.contains('btn-mode')) {
@@ -22,6 +24,7 @@ export default function gameHandler(Game, settings) {
             target.classList.add('active');
         }
     });
+    //
     langButtons.addEventListener('click', (e) => {
         const target = e.target;
         if (target.textContent === 'en') {
