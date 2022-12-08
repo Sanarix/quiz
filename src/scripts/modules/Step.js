@@ -5,6 +5,7 @@ export default class Step {
 		this.respondingPlayer = player1;
 		this.Modal = Modal
 		this.Timer = Timer;
+		this.correctAnswer;
 	}
 
 	next(gameAnswerEn, gameAnswerRu, playerAnswer) {
@@ -12,19 +13,33 @@ export default class Step {
 			this.openStepModal()
 			//добавить очки отвечавшему, вывести модалку о переходе хода
 			//сменить отвечающего игрока
+		} else {
+			const message = `
+				<p>
+					Правильный ответ на английском:
+				</p>
+				<p>
+					${gameAnswerEn}
+				</p>
+				<p>
+					На русском: 
+				</p>
+				<p>
+					${gameAnswerRu}
+				</p>
+			`
+			this.openStepModal(message)
 		}
 	}
 
-	openStepModal() {
+	openStepModal(message) {
 		const header = 'Конец хода';
-		const message = 'Ход передаётся дальше'
 		const body = `
-			Ответ ${'верный'}.
-			${message}
+			Ответ ${this.correctAnswer? 'верный' : 'неверный'}.
+			${this.correctAnswer? '': message}
 		`;
 
 		this.Modal.renderModal(header, body);
-		console.log(this.Timer);
 		this.Modal.open(this.Timer);
 	}
 
@@ -33,11 +48,16 @@ export default class Step {
 	}
 
 	checkAnswer(gameAnswerEn, gameAnswerRu, playerAnswer) {
+		console.log(gameAnswerEn);
+		console.log(gameAnswerRu);
+		console.log(playerAnswer);
 		if(playerAnswer.toLowerCase() === gameAnswerEn.toLowerCase() 
 			|| playerAnswer.toLowerCase() === gameAnswerRu.toLowerCase()
 			) {
+				this.correctAnswer = true;
 				return true
 			} else {
+				this.correctAnswer = false;
 				return false
 			}
 	}

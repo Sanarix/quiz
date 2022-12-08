@@ -28,6 +28,9 @@ export default class Modal {
 
 		//Закрываем модальное окно, передаём Game для включения таймера
 		document.querySelector('.close').addEventListener('click', () => {this.close(this.Game)});	
+
+		document.querySelector('.modal-wrapper').addEventListener('click', () => {
+			this.close(this.Game)});
 	}
 
 	open(Timer: any) {

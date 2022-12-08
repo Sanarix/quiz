@@ -345,6 +345,15 @@ main {
   z-index: 10000;
   background-color: rgba(0, 0, 0, 0.5);
 }
+.modal-wrapper .close {
+  position: relative;
+  top: -30%;
+  left: 45%;
+  font-size: 5em;
+  border-radius: 50%;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.7);
+}
 .modal-wrapper .modal {
   position: relative;
   width: 40%;
@@ -352,15 +361,6 @@ main {
   background-color: #fff;
   border-radius: 10px;
   display: block;
-}
-.modal-wrapper .modal .close {
-  position: absolute;
-  top: 1%;
-  left: 95%;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  z-index: 100;
 }
 .modal-wrapper .modal .modal-content {
   width: 100%;
@@ -468,11 +468,7 @@ main {
     margin-top: 10%;
   }
 
-  .modal-wrapper .modal {
-    width: 80%;
-    min-height: 50%;
-  }
-  .modal-wrapper .modal .close {
-    left: 90%;
+  .close {
+    display: none;
   }
 }
