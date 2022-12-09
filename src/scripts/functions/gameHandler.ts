@@ -27,12 +27,19 @@ export default function gameHandler(Game: any, settings: Object) {
 
 	//
 	langButtons.addEventListener('click', (e: any) => {
+		//Игнорируем нажатие на подсказку
 		const target = e.target;
+		if(target.textContent ==='?') {
+			return
+		}
+
+		//При нажатии на кнопку английского выводим запрос на англ., иначе на рус
 		if(target.textContent === 'en') {
 			document.querySelector('.question').textContent = Game.question;
 		}else {
 			document.querySelector('.question').textContent = Game.questionRu;
 		}
+		//При нажатии на выбранную кнопку, игнорируем
 		if(target.textContent === Game.lang) {
 			return
 		}
