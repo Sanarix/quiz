@@ -33,7 +33,8 @@ export default class Game {
     }
     start(element, settings) {
         this.settings = settings;
-        this.Step = new Step(settings.player1, settings.player2, this.Modal, this.Timer);
+        this.Step = new Step(settings.player1, settings.player2, this);
+        this.respondingPlayer = settings.player1;
         this.renderGame(element, settings, this.score1, this.score2);
         this.setActiveCoastButton(this.settings);
         this.nextQuestion(settings);
@@ -182,5 +183,13 @@ export default class Game {
 		</div>
 		<!--game-->
 		`;
+    }
+    refreshScore() {
+        const score1 = document.querySelector('.pscore-1');
+        const score2 = document.querySelector('.pscore-2');
+        score1.textContent = this.score1.toString();
+        if (this.settings.player2) {
+            score2.textContent = this.score2.toString();
+        }
     }
 }

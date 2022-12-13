@@ -57,5 +57,12 @@ export default function gameHandler(Game, settings) {
     }
     buttonRules.addEventListener('click', Game.renderRules.bind(Game));
     buttonHint.addEventListener('click', Game.renderHint.bind(Game));
-    submitButton.addEventListener('click', () => Game.Step.next(Game.answer, Game.answerRu, answerContainer.value));
+    submitButton.addEventListener('click', () => {
+        if (answerContainer.value) {
+            Game.Step.next(Game.answer, Game.answerRu, answerContainer.value);
+        }
+        else {
+            console.log('Всплытие оповещения о вводе ответа');
+        }
+    });
 }

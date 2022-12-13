@@ -1,10 +1,11 @@
 export default class Step {
-	constructor(player1, player2, Modal, Timer) {
+	constructor(player1, player2, Game) {
 		this.player1 = player1;
 		this.player2 = player2 || null;
 		this.respondingPlayer = player1;
-		this.Modal = Modal
-		this.Timer = Timer;
+		this.Game = Game;
+		this.Modal = Game.Modal
+		this.Timer = Game.Timer;
 		this.correctAnswer;
 	}
 
@@ -48,17 +49,26 @@ export default class Step {
 	}
 
 	checkAnswer(gameAnswerEn, gameAnswerRu, playerAnswer) {
-		console.log(gameAnswerEn);
-		console.log(gameAnswerRu);
-		console.log(playerAnswer);
-		if(playerAnswer.toLowerCase() === gameAnswerEn.toLowerCase() 
+		console.log('отработал');
+		if(playerAnswer 
+			&& playerAnswer.toLowerCase() === gameAnswerEn.toLowerCase() 
 			|| playerAnswer.toLowerCase() === gameAnswerRu.toLowerCase()
 			) {
 				this.correctAnswer = true;
+				this.accrualPoints()
 				return true
 			} else {
 				this.correctAnswer = false;
 				return false
 			}
+	}
+
+	accrualPoints() {
+		if(this.respondingPlayer === this.player1) {
+			this.Game.score1 += this.Game.settings.currentCoast;
+		}else {
+			this.Game.score2 += this.Game.settings.currentCoast;
+		}
+		this.Game.refreshScore();
 	}
 }
