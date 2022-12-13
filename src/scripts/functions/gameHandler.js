@@ -18,6 +18,9 @@ export default function gameHandler(Game, settings) {
     //Присваиваем стоимость вопроса, и делаем активной кнопку
     buttonBlock.addEventListener('click', (e) => {
         const target = e.target;
+        if (!Game.stepFlag) {
+            return;
+        }
         if (target.classList.contains('btn-mode')) {
             Game.settings.currentCoast = +target.textContent;
             resetActiveButtons(buttonBlock);

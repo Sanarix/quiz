@@ -29,6 +29,8 @@ export default class Game {
         this.lang = 'en';
         this.Modal = new Modal(this);
         this.Step;
+        //Переменная для обозначения возможности смены стоимости вопроса
+        this.stepFlag = false;
         this.respondingPlayer = '';
     }
     start(element, settings) {
@@ -143,7 +145,7 @@ export default class Game {
 				<!--control-->
 				<div class="interface">
 					<header class="container interface-header">
-					<div class="current-player">Отвечает: ${this.respondingPlayer}</div>
+					<div class="current-player">Отвечает: <span class="player-name">${this.respondingPlayer}</span></div>
 					<div class="timer">30</div>
 					</header>
 					<div class="question-container">
@@ -191,5 +193,9 @@ export default class Game {
         if (this.settings.player2) {
             score2.textContent = this.score2.toString();
         }
+    }
+    refreshRespondingPlayer() {
+        const respondingPlayer = document.querySelector('.player-name');
+        respondingPlayer.textContent = this.respondingPlayer.toString();
     }
 }

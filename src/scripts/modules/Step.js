@@ -11,9 +11,10 @@ export default class Step {
 
 	next(gameAnswerEn, gameAnswerRu, playerAnswer) {
 		if(this.checkAnswer(gameAnswerEn, gameAnswerRu, playerAnswer)) {
-			this.openStepModal()
-			//добавить очки отвечавшему, вывести модалку о переходе хода
-			//сменить отвечающего игрока
+				this.openStepModal()
+				this.accrualPoints();
+				this.Game.stepFlag = true;
+				this.changeRespondingPlayer();
 		} else {
 			const message = `
 				<p>
@@ -45,17 +46,17 @@ export default class Step {
 	}
 
 	changeRespondingPlayer() {
-		this.respondingPlayer === this.player1? this.player2 : this.player1;
+		this.respondingPlayer === this.player1 ? this.respondingPlayer = this.player2 : this.respondingPlayer = this.player1;
+		this.Game.respondingPlayer = this.respondingPlayer;
+		this.Game.refreshRespondingPlayer();
 	}
 
 	checkAnswer(gameAnswerEn, gameAnswerRu, playerAnswer) {
-		console.log('отработал');
 		if(playerAnswer 
 			&& playerAnswer.toLowerCase() === gameAnswerEn.toLowerCase() 
 			|| playerAnswer.toLowerCase() === gameAnswerRu.toLowerCase()
 			) {
 				this.correctAnswer = true;
-				this.accrualPoints()
 				return true
 			} else {
 				this.correctAnswer = false;
