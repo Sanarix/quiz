@@ -46,9 +46,15 @@ export default class Step {
 	}
 
 	changeRespondingPlayer() {
-		this.respondingPlayer === this.player1 ? this.respondingPlayer = this.player2 : this.respondingPlayer = this.player1;
-		this.Game.respondingPlayer = this.respondingPlayer;
-		this.Game.refreshRespondingPlayer();
+		if(!this.player2) {
+			this.Game.refreshRespondingPlayer();
+		}
+			//Меняем отвечающего игрока
+			this.respondingPlayer === this.player1 ? this.respondingPlayer = this.player2 : this.respondingPlayer = this.player1;
+			//Отправляем значение в Game
+			this.Game.respondingPlayer = this.respondingPlayer;
+			//Отрисовываем имя игрока
+			this.Game.refreshRespondingPlayer();
 	}
 
 	checkAnswer(gameAnswerEn, gameAnswerRu, playerAnswer) {
