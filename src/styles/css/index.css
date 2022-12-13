@@ -333,6 +333,17 @@ main {
   display: none !important;
 }
 
+.hidden {
+  visibility: hidden;
+  transform: translateY(100%);
+  transition-property: all;
+  transition-duration: 200ms;
+}
+
+.visible {
+  display: block;
+}
+
 .modal-wrapper {
   position: absolute;
   display: flex;
@@ -344,6 +355,7 @@ main {
   height: 100vh;
   z-index: 10000;
   background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 .modal-wrapper .close {
   position: relative;
@@ -361,6 +373,7 @@ main {
   background-color: #fff;
   border-radius: 10px;
   display: block;
+  animation: modalAnimation 0.2s;
 }
 .modal-wrapper .modal .modal-content {
   width: 100%;
@@ -376,7 +389,11 @@ main {
 .modal-wrapper .modal .modal-content .modal-body {
   font-size: 1.2em;
 }
-
+@keyframes modalAnimation {
+  from {
+    top: 100%;
+  }
+}
 @media screen and (max-width: 1280px) {
   .game-field {
     width: 100%;

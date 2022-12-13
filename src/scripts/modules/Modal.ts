@@ -2,11 +2,13 @@ import componentHide from "../functions/componentHide";
 
 export default class Modal {
 	private wrapper: HTMLObjectElement;
+	private modal: HTMLObjectElement;
 	private closeButton: HTMLObjectElement;
 	private Game: any;
 
 	constructor(Game: any) {
 		this.wrapper = document.querySelector('.modal-wrapper');
+		this.modal = document.querySelector('.modal');
 		this.Game = Game;
 	}
 
@@ -35,11 +37,13 @@ export default class Modal {
 
 	open(Timer: any) {
 		this.wrapper.classList.remove('hide')
+		this.modal.classList.remove('hidden');
 		Timer.pauseTimer();
 	}
 
 	close(Game: any) {
-		componentHide(this.wrapper)
+		this.modal.classList.add('hidden')
+		setTimeout(() => {componentHide(this.wrapper)}, 300) 
 		Game.Timer.startTimer();
 	}
 }

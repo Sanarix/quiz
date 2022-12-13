@@ -170,6 +170,7 @@ export default class Game {
 					<header class="container interface-header">
 					<div class="current-player">Отвечает: <span class="player-name">${this.respondingPlayer}</span></div>
 					<div class="timer">30</div>
+					<div class="next-step hide">Next</div>
 					</header>
 					<div class="question-container">
 						<div class="question">

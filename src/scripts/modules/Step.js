@@ -48,6 +48,7 @@ export default class Step {
 	changeRespondingPlayer() {
 		if(!this.player2) {
 			this.Game.refreshRespondingPlayer();
+			return
 		}
 			//Меняем отвечающего игрока
 			this.respondingPlayer === this.player1 ? this.respondingPlayer = this.player2 : this.respondingPlayer = this.player1;

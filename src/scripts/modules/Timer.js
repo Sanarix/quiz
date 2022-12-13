@@ -26,7 +26,7 @@ export default class Timer {
 			this.stopTimer();
 			clearInterval(this.intervalId);
 			//TODO Всплытие окна об окончании хода,
-			//а место времени кнопка следующий ход
+			//в место времени кнопка следующий ход
 		}
 	}
 
@@ -47,12 +47,3 @@ export default class Timer {
 		console.log('время таймера кончилось');
 	}
 }
-
-
-// pauseButton.addEventListener('click', () => {
-// 	clearInterval(intervalId)
-// })
-
-// resetButton.addEventListener('click', () => {
-// 	reset();
-// })
